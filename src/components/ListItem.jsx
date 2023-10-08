@@ -1,6 +1,6 @@
-const ListItem = ({monster}) => {
+const ListItem = ({monster, onClick}) => {
     return (
-        <li>{monster.name}</li>
+        <li className='list-item' onClick={()=>{onClick(monster.index)}}>{monster.name}</li>
     );
 }
  

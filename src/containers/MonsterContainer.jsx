@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import MonsterList from '../components/MonsterList';
-// import MonsterDetail from '../components/MonsterDetail';
+import MonsterDetail from '../components/MonsterDetail';
+import MonsterImage from '../components/MonsterImage';
 
 const MonsterContainer = () => {
   const [monsters, setMonsters] = useState([])
-  
+  const [selectedMonster, setSelectedMonster] = useState({})
 
   useEffect(() => {
     getMonsters()
@@ -16,17 +17,27 @@ const MonsterContainer = () => {
     .then(monsters=>setMonsters(monsters.results))
   }
 
-  // const getMonsterDetail = function(index) {
-  //   fetch('https://www.dnd5eapi.co/api/monsters'+index)
-  // }
-
-  // const onClickDetail = function(index) {
-    // getMonsterDetail(index)
-  // }
+  const onMonsterClick = function(index) {
+    fetch('https://www.dnd5eapi.co/api/monsters/'+index)
+    .then(res=>res.json()
+    .then(monster=>setSelectedMonster(monster)))
+  }
 
   return (
     <>
-      <MonsterList monsters={monsters}/>
+    <div id='monster-container'>
+      <div id='monster-detail'>
+        {selectedMonster ? <MonsterDetail monster={selectedMonster}/> : null}
+        {/* {selectedMonster ? <p>Please select a monster.</p> : <MonsterDetail monster={selectedMonster}/>} */}
+      </div>
+      <div id='monster-image'>
+        {selectedMonster ? <MonsterImage monster={selectedMonster}/> : null}
+      </div>
+      <div id='monster-list'>
+        <MonsterList monsters={monsters} onClick={onMonsterClick}/>
+      </div>
+    </div>
+      
     </>
   )
 }

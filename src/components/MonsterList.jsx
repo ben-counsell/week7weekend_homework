@@ -1,13 +1,13 @@
 import ListItem from "./ListItem";
 
-const MonsterList = ({monsters}) => {
+const MonsterList = ({monsters, onClick}) => {
 
     const monsterList = monsters.map((monster, index) => {
-        return <ListItem monster={monster} key={index}/>
+        return <ListItem monster={monster} key={index} onClick={onClick}/>
     })
 
     return (
-        <ul>
+        <ul className='monster-list'>
             {monsterList}
         </ul>
     );
