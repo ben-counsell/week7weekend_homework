@@ -1,17 +1,16 @@
-import MonsterEntry from "./MonsterEntry";
+import ListItem from "./ListItem";
 
-const MonsterList = ({monsters, onMonsterClick}) => {
-  const monsterEntries = monsters.map((monster, index) => {
-    return <MonsterEntry monster={monster} key={index} onMonsterClick={onMonsterClick}/>
-  })
+const MonsterList = ({monsters}) => {
 
-  return (
-    <div>
-      <ul>
-        {monsterEntries}
-      </ul>
-    </div>
-  );
+    const monsterList = monsters.map((monster, index) => {
+        return <ListItem monster={monster} key={index}/>
+    })
+
+    return (
+        <ul>
+            {monsterList}
+        </ul>
+    );
 }
  
-export default MonsterList
+export default MonsterList;

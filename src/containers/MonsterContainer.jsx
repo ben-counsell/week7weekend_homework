@@ -1,18 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import MonsterList from '../components/MonsterList';
-import MonsterDetail from '../components/MonsterDetail';
+// import MonsterDetail from '../components/MonsterDetail';
 
 const MonsterContainer = () => {
   const [monsters, setMonsters] = useState([])
-  const [monsterDetail, setMonsterDetail] = useState=({})
+  
 
   useEffect(() => {
     getMonsters()
   }, [])
-
-  useEffect(() => {
-    getMonsterDetail(monsterDetail)
-  }, [monsterDetail])
 
   const getMonsters = function(){
     fetch('https://www.dnd5eapi.co/api/monsters')
@@ -20,20 +16,17 @@ const MonsterContainer = () => {
     .then(monsters=>setMonsters(monsters.results))
   }
 
-  const getMonsterDetail = function(monster){
-    fetch('https://www.dnd5eapi.co' + {monster})
-    .then(res=>res.json())
-    .then(monster=>setMonsterDetail(monster))
-  }
+  // const getMonsterDetail = function(index) {
+  //   fetch('https://www.dnd5eapi.co/api/monsters'+index)
+  // }
 
-  const onMonsterClick = (monster) => {
-    setMonsterDetail(monster)
-  }
+  // const onClickDetail = function(index) {
+    // getMonsterDetail(index)
+  // }
 
   return (
     <>
-      <MonsterList monsters={monsters} onMonsterClick={onMonsterClick}/>
-      {monsterDetail ? <MonsterDetail monster={monsterDetail}/> : null}
+      <MonsterList monsters={monsters}/>
     </>
   )
 }
