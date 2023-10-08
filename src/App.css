@@ -1,8 +1,51 @@
 body {
   background-color: #1e1e1e;
   color: #eeeeee;
+  margin: 5%;
+  width: 80%;
+  display: flex;
+  align-items: center;
 }
 
-li {
+hr {
+  border-color: #ffad28;
+}
+
+h2 {
+  margin-bottom: 0px;
+}
+
+.monster-list {
+  margin-right: 30px;
+  height: 50em;
+  width: 13em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.list-item {
   list-style: none;
+}
+
+.list-item:hover {
+  color: #ffad28;
+  transition: 0.2s;
+  cursor: grab;
+}
+
+#monster-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+#monster-detail {
+  width: 400px;
+}
+
+img {
+  max-width: 300px;
+  max-height: 300px;
+  margin-top: 15px;
+  border-style: 2px solid #ffad28;
 }
