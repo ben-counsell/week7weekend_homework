@@ -1,6 +1,8 @@
 const MonsterImage = ({monster}) => {
     return (
-        <img src={"https://www.dnd5eapi.co"+monster.image} alt={monster.name}/>
+        <>
+            {monster.image ? <img src={"https://www.dnd5eapi.co"+monster.image} alt={monster.name}/> : null}
+        </>
     );
 }
 
